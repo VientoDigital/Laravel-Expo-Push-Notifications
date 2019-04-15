@@ -1,0 +1,22 @@
+{
+    "name": "vientodigital/laravel-expo-push-notification",
+    "description": "Laravel Channel for sending push notifications using Expo React Native",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Yoalli",
+            "email": "victoryoalli@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/notifications": "^5.7",
+        "illuminate/support": "^5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "VientoDigital\\LaravelExpoPushNotifications\\": "src/"
+        }
+    }
+}
