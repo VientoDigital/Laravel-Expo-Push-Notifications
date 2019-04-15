@@ -1,5 +1,5 @@
 {
-    "name": "vientodigital/laravel-expo-push-notification",
+    "name": "vientodigital/laravel-expo-push-notifications",
     "description": "Laravel Channel for sending push notifications using Expo React Native",
     "type": "library",
     "license": "MIT",
