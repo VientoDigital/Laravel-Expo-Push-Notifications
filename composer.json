@@ -3,7 +3,7 @@
     "description": "Laravel Channel for sending push notifications using Expo React Native",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Victor Yoalli",
@@ -12,8 +12,8 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "illuminate/notifications": "^5.7",
-        "illuminate/support": "^5.7"
+        "illuminate/notifications": "^5.5",
+        "illuminate/support": "^5.5"
     },
     "autoload": {
         "psr-4": {
