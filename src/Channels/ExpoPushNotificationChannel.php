@@ -5,6 +5,7 @@ namespace VientoDigital\LaravelExpoPushNotifications\Channels;
 use Illuminate\Notifications\Notification;
 use GuzzleHttp\Client as HttpClient;
 use VientoDigital\LaravelExpoPushNotifications\ExpoPushNotifiable;
+use Illuminate\Support\Facades\Log;
 
 class ExpoPushNotificationChannel
 {
@@ -23,18 +24,16 @@ class ExpoPushNotificationChannel
             throw new RuntimeException('Notification is missing toExpo method.');
         }
         $data = $notification->toExpo($notifiable);
-        $this->sentTokens($notifiable, $notification, $data);
-        ;
-        if (!empty($notifiable->tokens()) && is_array($notifiable->tokens())) {
-        }
+        $this->sendTokens($notifiable, $notification, $data);
     }
 
-    private function sentTokens(ExpoPushNotifiable $notifiable, Notification $notification, $data)
+    private function sendTokens(ExpoPushNotifiable $notifiable, Notification $notification, $data)
     {
         $tokens = collect($notifiable->tokens());
         $tokens->each(function ($to, $key) use ($notifiable, $notification,$data) {
             $data = $this->buildMessage($notification->toExpo($notifiable));
             $data['to'] = $to;
+            Log::info(['token' => $data]);
             $this->http->request('POST', $this->url, ['json' => $data]);
         });
     }
