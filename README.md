@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Laravel 5.7+
+Laravel 5.5+
 PHP 7+
 ```
 
@@ -25,9 +25,22 @@ Say what the step will be
 composer require vientodigital/laravel-expo-push-notification
 ```
 
-And repeat
-
+### Example
 ```
+use VientoDigital\LaravelExpoPushNotifications\Channels\ExpoPushNotificationChannel;
+use VientoDigital\LaravelExpoPushNotifications\Messages\ExpoPushNotificationMessage;
+
+    public function via($notifiable)
+    {
+        return ['mail', 'database', ExpoPushNotificationChannel::class];
+    }
+
+    public function toExpo($notifiable)
+    {
+        return (new ExpoPushNotificationMessage)
+            ->title("Push Notification Title")
+            ->body("Lorem ipsum....");
+    }
 
 ```
 
